@@ -2,19 +2,24 @@
 var timeText,
     time,
     secondCounter,
-    lastSecond;
-
+    lastSecond,
+    timeValue;
 
 function setup() {
-  print("test");
+  print("bluEts");
   createCanvas(windowWidth, windowHeight);
 
   time = createElement("div", "");
   time.addClass("time");
   secondCounter = 0;
   lastSecond = second();
+  timeValue = "" + ((hour > 12) ? hour - 12 : hour)
+  timeValue  += ((minute < 10) ? ":0" : ":") + minute
+  timeValue  += ((second < 10) ? ":0" : ":") + second
+  timeValue  += (hour >= 12) ? " P.M." : " A.M."
 
-  background(0,0,255);
+  background(0,0,200);
+  lerpColor (0,0,250);
 
 }
 
@@ -37,6 +42,10 @@ function draw() {
     secondCounter = 0;
 
   }
+
+  if(secondCounter > 0) { 
+  lerpColor (0, 0, 200)
+}
 
 
 
