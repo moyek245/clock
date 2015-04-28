@@ -1,0 +1,46 @@
+
+var timeText,
+    time,
+    secondCounter,
+    lastSecond;
+
+
+function setup() {
+  print("test");
+  createCanvas(windowWidth, windowHeight);
+
+  time = createElement("div", "");
+  time.addClass("time");
+  secondCounter = 0;
+  lastSecond = second();
+
+  background(0,0,255);
+
+}
+
+function draw() {
+
+  timeText = hour() + ":" + minute() + ":" + second();
+
+  if(second() != lastSecond) {
+    secondCounter = secondCounter + 1;
+    lastSecond = second();
+  }
+
+  if(secondCounter >= 1) {
+
+    console.log('reset!');
+
+    var lerpColor = floor(random(255));
+    background(lerpColor);
+
+    secondCounter = 0;
+
+  }
+
+
+
+
+  time.html(timeText);
+
+}
